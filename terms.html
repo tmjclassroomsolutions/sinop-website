@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SINOP — Terms of Service</title>
+  <!-- Favicons -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="icon.png">
+  <link rel="apple-touch-icon" href="icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2176FF;
+      --primary-dark: #1e3a8a;
+      --primary-navy: #0b132b;
+      --text-main: #0f172a;
+      --text-body: #334155;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --code-bg: #f1f5f9;
+      --callout-bg: #eff6ff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #f8fafc;
+      color: var(--text-body);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.7;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .navbar {
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+      padding: 14px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: #0f172a;
+      text-decoration: none;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .brand-logo {
+      width: 34px;
+      height: 34px;
+      border-radius: 9px;
+      object-fit: contain;
+      box-shadow: 0 4px 12px rgba(33, 118, 255, 0.3);
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: background 0.2s;
+    }
+
+    .back-btn:hover {
+      background: #eff6ff;
+    }
+
+    .page-wrapper {
+      max-width: 860px;
+      margin: 40px auto;
+      padding: 40px;
+      background: #ffffff;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05);
+      flex: 1;
+    }
+
+    @media (max-width: 640px) {
+      .page-wrapper {
+        margin: 16px;
+        padding: 24px 20px;
+      }
+    }
+
+    .doc-header {
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 20px;
+      margin-bottom: 28px;
+    }
+
+    h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+
+    .meta-date {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-top: 32px;
+      margin-bottom: 12px;
+    }
+
+    p {
+      margin-bottom: 16px;
+      font-size: 0.96rem;
+    }
+
+    ul {
+      margin-bottom: 18px;
+      padding-left: 24px;
+      font-size: 0.96rem;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    strong {
+      color: var(--text-main);
+    }
+
+    .callout {
+      background: var(--callout-bg);
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 10px 10px 0;
+      margin: 20px 0;
+      font-size: 0.93rem;
+      line-height: 1.6;
+    }
+
+    .callout strong {
+      color: var(--primary-dark);
+    }
+
+    code {
+      background: var(--code-bg);
+      color: #0f172a;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: ui-monospace, monospace;
+      font-size: 0.88rem;
+      border: 1px solid #cbd5e1;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .footer {
+      background: var(--primary-navy);
+      padding: 24px;
+      text-align: center;
+      font-size: 0.84rem;
+      color: #64748b;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="navbar">
+    <a href="index.html" class="brand">
+      <img src="icon.png" alt="SINOP" class="brand-logo">
+      <span>SINOP</span>
+    </a>
+    <a href="index.html" class="back-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Back to Home
+    </a>
+  </header>
+
+  <main class="page-wrapper">
+    <div class="doc-header">
+      <h1>Terms of Service</h1>
+      <div class="meta-date">Effective Date: September 13, 2026 • Last Updated: September 13, 2026</div>
+    </div>
+
+    <p>
+      Welcome to <strong>SINOP</strong> ("the Application", "we", "our"), developed by <strong>TMJ Classroom Solutions</strong>. By downloading, installing, or using SINOP, you agree to be bound by these Terms of Service ("Terms").
+    </p>
+
+    <h2>1. Description of Service</h2>
+    <p>
+      SINOP is an offline-first desktop productivity application created for educators to generate lesson plans, construct classroom assessments, evaluate student performance, and create classroom learning materials.
+    </p>
+
+    <h2>2. License Grant & Usage</h2>
+    <p>
+      Subject to compliance with these Terms, TMJ Classroom Solutions grants you a personal, revocable, non-exclusive, non-transferable license to install and execute the application on your devices for educational, instructional, and classroom administrative purposes.
+    </p>
+
+    <h2>3. User Data & Ownership</h2>
+    <ul>
+      <li><strong>Complete Ownership:</strong> You retain full and exclusive ownership of all student records, test items, grades, curriculum materials, and documents entered or produced in SINOP.</li>
+      <li><strong>Local Storage:</strong> Your records remain stored locally on your device in an encrypted database. We do not transmit or store your classroom records on our company servers.</li>
+    </ul>
+
+    <h2>4. Google Drive Cloud Backup Service</h2>
+    <div class="callout">
+      <strong>User-Controlled Cloud Backup:</strong> Connecting your Google Drive is entirely optional. When activated, SINOP saves backups solely inside your dedicated <code>"SINOP Cloud Files"</code> folder. You retain complete authority to delete backups or disconnect your account at any time.
+    </div>
+    <p>
+      You are solely responsible for maintaining the confidentiality of your Google Account credentials. TMJ Classroom Solutions is not liable for data loss arising from compromised Google credentials or user deletion of files from Google Drive.
+    </p>
+
+    <h2>5. Prohibited Conduct</h2>
+    <p>You agree not to:</p>
+    <ul>
+      <li>Decompile, reverse-engineer, or disassemble the application binaries, except as permitted by applicable law.</li>
+      <li>Use the software for unlawful, malicious, or abusive activities.</li>
+      <li>Circumvent licensing protections or security mechanisms implemented within the application.</li>
+    </ul>
+
+    <h2>6. Disclaimer of Warranties</h2>
+    <p>
+      SINOP is provided on an <strong>"AS IS"</strong> and <strong>"AS AVAILABLE"</strong> basis without warranties of any kind, either express or implied, including but not limited to warranties of merchantability, fitness for a particular educational purpose, or non-infringement.
+    </p>
+
+    <h2>7. Limitation of Liability</h2>
+    <p>
+      To the maximum extent permitted by applicable law, TMJ Classroom Solutions shall not be held liable for any direct, indirect, incidental, or consequential damages resulting from the use or inability to use the application.
+    </p>
+
+    <h2>8. Changes to Terms</h2>
+    <p>
+      We reserve the right to update these Terms periodically. Your continued use of the application following updates indicates your acceptance of the revised Terms.
+    </p>
+
+    <h2>9. Contact Information</h2>
+    <p>For inquiries regarding these Terms of Service, please contact:</p>
+    <ul>
+      <li><strong>Developer / Project:</strong> TMJ Classroom Solutions</li>
+      <li><strong>GitHub:</strong> <a href="https://github.com/tmjclassroomsolutions" target="_blank" rel="noopener noreferrer">https://github.com/tmjclassroomsolutions</a></li>
+      <li><strong>Facebook:</strong> <a href="https://www.facebook.com/profile.php?id=61591647987173" target="_blank" rel="noopener noreferrer">Teacher MJ Facebook Profile</a></li>
+    </ul>
+  </main>
+
+  <footer class="footer">
+    &copy; 2026 SINOP Classroom Solutions by Teacher MJ. All rights reserved.
+  </footer>
+
+</body>
+</html>
