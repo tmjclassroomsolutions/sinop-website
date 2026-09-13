@@ -216,10 +216,18 @@
       color: #0f172a;
     }
 
-    .nav-right-group {
+    /* Left Group: Brand + Navigation Links */
+    .nav-left-group {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 8px;
+    }
+
+    .nav-brand-divider {
+      width: 1px;
+      height: 18px;
+      background: #cbd5e1;
+      margin: 0 10px 0 6px;
     }
 
     .nav-links {
@@ -232,49 +240,44 @@
     }
 
     .nav-link {
-      font-size: 0.875rem;
+      font-size: 0.88rem;
       font-weight: 500;
-      color: #475569;
+      color: #334155;
       padding: 6px 12px;
-      border-radius: 8px;
+      border-radius: 6px;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      transition: all 0.2s ease;
+      transition: all 0.15s ease;
     }
 
     .nav-link svg {
       stroke: currentColor;
-      transition: stroke 0.2s ease;
+      transition: stroke 0.15s ease;
     }
 
     .nav-link:hover {
-      color: #0f172a;
-      background: rgba(15, 23, 42, 0.05);
+      color: #0284c7;
+      background: rgba(2, 132, 199, 0.06);
     }
 
-    .nav-divider {
-      width: 1px;
-      height: 20px;
-      background: #e2e8f0;
-      margin: 0 4px;
-    }
-
+    /* Right Group: Actions */
     .nav-actions {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
+      margin-left: auto;
     }
 
-    .btn-nav-sayhi {
+    .btn-nav-contact {
       display: inline-flex;
       align-items: center;
       gap: 6px;
       background: #ffffff;
       color: #334155 !important;
-      border: 1px solid #e2e8f0;
-      padding: 7px 15px;
+      border: 1.5px solid #e2e8f0;
+      padding: 7px 16px;
       border-radius: 9999px;
       font-weight: 600;
       font-size: 0.85rem;
@@ -283,7 +286,7 @@
       box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
     }
 
-    .btn-nav-sayhi:hover {
+    .btn-nav-contact:hover {
       background: #f8fafc;
       color: #0f172a !important;
       border-color: #cbd5e1;
@@ -1977,9 +1980,9 @@
       .footer-grid { grid-template-columns: 1fr; gap: 28px; }
     }
 
-    @media (max-width: 920px) {
+    @media (max-width: 960px) {
       .nav-links,
-      .nav-divider {
+      .nav-brand-divider {
         display: none !important;
       }
     }
@@ -1991,7 +1994,7 @@
     }
 
     @media (max-width: 520px) {
-      .btn-nav-sayhi {
+      .btn-nav-contact {
         display: none !important;
       }
       .btn-nav-download {
@@ -2013,12 +2016,15 @@
   <!-- Top Navigation Bar -->
   <nav class="navbar" id="mainNavbar">
     <div class="container nav-inner">
-      <a href="#" class="brand">
-        <img src="icon.png" alt="SINOP Logo" class="brand-icon">
-        <span class="brand-text">SINOP</span>
-      </a>
+      <!-- Left Group: Brand + Navigation Links -->
+      <div class="nav-left-group">
+        <a href="#" class="brand">
+          <img src="icon.png" alt="SINOP Logo" class="brand-icon">
+          <span class="brand-text">SINOP</span>
+        </a>
 
-      <div class="nav-right-group">
+        <div class="nav-brand-divider"></div>
+
         <ul class="nav-links">
           <li><a href="#features" class="nav-link">Features</a></li>
           <li><a href="#pricing" class="nav-link">Pricing</a></li>
@@ -2031,19 +2037,18 @@
           <li><a href="#smartscreen" class="nav-link">Installation Help</a></li>
           <li><a href="#faq" class="nav-link">FAQ</a></li>
         </ul>
+      </div>
 
-        <div class="nav-divider"></div>
-
-        <div class="nav-actions">
-          <a href="#developer" class="btn-nav-sayhi" title="Say Hi to Teacher MJ">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-            Say Hi
-          </a>
-          <a href="#download" class="btn-nav-download">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
-            Download Free
-          </a>
-        </div>
+      <!-- Right Group: Actions -->
+      <div class="nav-actions">
+        <a href="#developer" class="btn-nav-contact" title="Contact Teacher MJ">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          Contact
+        </a>
+        <a href="#download" class="btn-nav-download">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+          Download Free
+        </a>
       </div>
     </div>
   </nav>
