@@ -2899,7 +2899,61 @@
       'deped.ph': 'deped.gov.ph'
     };
 
-    function validateEmailInput(email) {
+    const TRUSTED_EMAIL_DOMAINS = [
+      'gmail.com', 'googlemail.com',
+      'yahoo.com', 'yahoo.com.ph', 'ymail.com', 'rocketmail.com',
+      'outlook.com', 'hotmail.com', 'live.com', 'msn.com', 'outlook.ph',
+      'icloud.com', 'me.com', 'mac.com',
+      'proton.me', 'protonmail.com', 'zoho.com', 'aol.com', 'mail.com'
+    ];
+
+    const KNOWN_DISPOSABLE_DOMAINS = [
+      'hebase.com', 'vebep.com', 'vintomaper.biz', 'chapsmail.com', 'fmail.com',
+      'tmpmail.org', 'emlpro.com', 'mohmal.com', '10minutemail.net', '10minutemail.com',
+      'tempmail.plus', 'temp-mail.org', 'temp-mail.io', 'mail.tm', 'wireconnected.com',
+      'afia.pro', 'binkmail.com', 'disposablemail.com', 'throwawaymail.com',
+      'guerrillamail.com', 'sharklasers.com', 'guerrillamail.info', 'grr.la',
+      'guerrillamail.biz', 'guerrillamail.de', 'guerrillamail.net', 'guerrillamail.org',
+      'mailinator.com', 'mailinator2.com', 'trashmail.com', 'yopmail.com',
+      'yopmail.net', 'yopmail.fr', 'cool.fr.nf', 'jetable.fr.nf', 'courriel.fr.nf',
+      'moncourrier.fr.nf', 'monemail.fr.nf', 'monemail.fr.nf', 'hide.biz.st',
+      'mymail.infos.st', 'nada.ltd', 'getairmail.com', 'inboxkitten.com',
+      'burnermail.io', 'crazymailing.com', 'dropmail.me', 'fakemailgenerator.com',
+      'generator.email', 'armyspy.com', 'cuvox.de', 'dayrep.com', 'fleckens.hu',
+      'gustr.com', 'jourrapide.com', 'rhyta.com', 'superrito.com', 'teleworm.us',
+      'clipmail.eu', 'fakemail.net', 'dispostable.com', 'spambog.com', 'trash-mail.com',
+      'mytemp.email', 'anonymbox.com'
+    ];
+
+    const DISPOSABLE_KEYWORDS = [
+      'tempmail', 'temp-mail', 'throwaway', 'guerrillamail', '10minutemail',
+      'mailinator', 'trashmail', 'yopmail', 'getairmail', 'sharklasers',
+      'fakemail', 'dispostable', 'generator', 'fakeinbox', 'inboxkitten',
+      'burnermail', 'crazymailing', 'mohmal', 'dropmail', 'mytemp',
+      'nada.ltd', 'armyspy', 'cuvox', 'dayrep', 'fleckens', 'gustr',
+      'jourrapide', 'rhyta', 'superrito', 'teleworm', 'clipmail',
+      'tmpmail', 'anonymbox', 'spambog', 'hebase', 'vebep'
+    ];
+
+    function isTrustedEmailDomain(domain) {
+      if (!domain) return false;
+      domain = domain.toLowerCase().trim();
+      if (domain === 'deped.gov.ph' || domain.endsWith('.deped.gov.ph')) return true;
+      if (domain.endsWith('.edu.ph') || domain.endsWith('.gov.ph') || domain.endsWith('.edu') || domain.endsWith('.ac.ph') || domain.endsWith('.school')) return true;
+      if (TRUSTED_EMAIL_DOMAINS.includes(domain)) return true;
+      return false;
+    }
+
+    function isDisposableDomain(domain) {
+      if (!domain) return true;
+      domain = domain.toLowerCase().trim();
+      if (domain === 'deped.gov.ph' || domain.endsWith('.deped.gov.ph')) return false;
+      if (domain.endsWith('.edu.ph') || domain.endsWith('.gov.ph') || domain.endsWith('.edu') || domain.endsWith('.ac.ph')) return false;
+      if (KNOWN_DISPOSABLE_DOMAINS.includes(domain)) return true;
+      return DISPOSABLE_KEYWORDS.some(kw => domain.includes(kw));
+    }
+
+    function validateEmailInput(email, isTrial = true) {
       if (!email || !email.includes('@')) {
         return { valid: false, message: 'Please enter a valid email address.' };
       }
@@ -2918,6 +2972,12 @@
       if (!basicRe.test(email.trim())) {
         return { valid: false, message: 'Invalid email format. Please check for typos.' };
       }
+      if (isDisposableDomain(domain)) {
+        return { valid: false, message: 'Temporary or disposable email addresses are not permitted. Please use your personal or DepEd email.' };
+      }
+      if (isTrial && !isTrustedEmailDomain(domain)) {
+        return { valid: false, message: 'To receive your 7-day trial key, please use your personal email (Gmail, Yahoo, Outlook, iCloud) or school email (@deped.gov.ph, .edu.ph). Temporary or unrecognized email domains are not accepted.' };
+      }
       return { valid: true };
     }
 
@@ -2934,7 +2994,7 @@
         return;
       }
 
-      const emailCheck = validateEmailInput(email);
+      const emailCheck = validateEmailInput(email, true);
       if (!emailCheck.valid) {
         showTrialError(emailCheck.message);
         return;
@@ -3102,7 +3162,7 @@
         showPaidError('Please fill in all required fields.');
         return;
       }
-      const emailCheck = validateEmailInput(email);
+      const emailCheck = validateEmailInput(email, false);
       if (!emailCheck.valid) {
         showPaidError(emailCheck.message);
         return;
