@@ -2126,27 +2126,37 @@
 
         <div class="download-btn-group">
           <!-- Windows Download -->
-          <a href="https://github.com/tmjclassroomsolutions/sinop-releases/releases/download/v1.4.5/SINOP-Setup-1.4.5.exe" 
+          <a href="https://github.com/tmjclassroomsolutions/sinop-releases/releases/download/v1.5.2/SINOP-Setup-1.5.2.exe" 
              class="download-card-btn btn-win" 
-             id="btnDownloadWin">
+             id="btnDownloadWin"
+             target="_blank"
+             rel="noopener noreferrer"
+             download="SINOP-Setup-1.5.2.exe">
             <span class="os-badge-chip" id="recBadgeWin">Recommended</span>
             <div class="btn-top-row">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 15v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
               <span>Windows 64-bit (.exe)</span>
             </div>
-            <span class="btn-sub-meta" id="metaWin">v1.4.5 &#8226; Win 10 & Win 11 (64-bit)</span>
+            <span class="btn-sub-meta" id="metaWin">v1.5.2 &#8226; Win 10 &amp; Win 11 (265.1 MB)</span>
           </a>
 
           <!-- Mac Download -->
           <a href="https://github.com/tmjclassroomsolutions/sinop-releases/releases/download/v1.3.2/SINOP-Setup-1.3.2.zip" 
              class="download-card-btn btn-mac" 
-             id="btnDownloadMac">
+             id="btnDownloadMac"
+             target="_blank"
+             rel="noopener noreferrer"
+             download="SINOP-Setup-1.3.2.zip">
             <div class="btn-top-row">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.94c1.5 0 2.75 1.06 4 1.06 3 0 6-8 6-12.22A4.91 4.91 0 0 0 17 5c-2.22 0-4 1.44-5 2-1-.56-2.78-2-5-2a4.9 4.9 0 0 0-5 4.78C2 14 5 22 8 22c1.25 0 2.5-1.06 4-1.06Z"/><path d="M10 2c1 .5 2 2 2 5"/></svg>
               <span>macOS Application (.zip)</span>
             </div>
             <span class="btn-sub-meta" id="metaMac">v1.3.2 &#8226; macOS Monterey or later</span>
           </a>
+        </div>
+
+        <div style="text-align: center; margin-top: 10px; font-size: 0.8rem; color: #64748b;">
+          Direct download issues? <a href="https://github.com/tmjclassroomsolutions/sinop-releases/releases/latest" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); font-weight: 600; text-decoration: underline;">Open GitHub Releases page</a> to download <code style="background: #f1f5f9; padding: 2px 5px; border-radius: 4px;">SINOP-Setup-1.5.2.exe</code> directly.
         </div>
 
         <div class="download-status-msg" id="downloadStatusMsg">
@@ -2880,7 +2890,12 @@
           const metaWin = document.getElementById('metaWin');
           const guideCode = document.getElementById('guideExeName');
           
-          if (winBtn) winBtn.href = exeAsset.browser_download_url;
+          if (winBtn) {
+            winBtn.href = exeAsset.browser_download_url;
+            winBtn.target = '_blank';
+            winBtn.rel = 'noopener noreferrer';
+            winBtn.setAttribute('download', exeAsset.name);
+          }
           const mbSize = (exeAsset.size / (1024 * 1024)).toFixed(1);
           if (metaWin) metaWin.textContent = `v${cleanVer} \u2022 Win 10 & 11 (${mbSize} MB)`;
           if (guideCode) guideCode.textContent = exeAsset.name;
@@ -2890,7 +2905,12 @@
         if (zipAsset) {
           const macBtn = document.getElementById('btnDownloadMac');
           const metaMac = document.getElementById('metaMac');
-          if (macBtn) macBtn.href = zipAsset.browser_download_url;
+          if (macBtn) {
+            macBtn.href = zipAsset.browser_download_url;
+            macBtn.target = '_blank';
+            macBtn.rel = 'noopener noreferrer';
+            macBtn.setAttribute('download', zipAsset.name);
+          }
           const mbSize = (zipAsset.size / (1024 * 1024)).toFixed(1);
           if (metaMac) metaMac.textContent = `${tagName} \u2022 macOS (${mbSize} MB)`;
         }
