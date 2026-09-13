@@ -2155,10 +2155,6 @@
           </a>
         </div>
 
-        <div style="text-align: center; margin-top: 10px; font-size: 0.8rem; color: #64748b;">
-          Direct download issues? <a href="https://github.com/tmjclassroomsolutions/sinop-releases/releases/latest" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); font-weight: 600; text-decoration: underline;">Open GitHub Releases page</a> to download <code id="directExeName" style="background: #f1f5f9; padding: 2px 5px; border-radius: 4px;">SINOP-Setup-1.5.2.exe</code> directly.
-        </div>
-
         <div class="download-status-msg" id="downloadStatusMsg">
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
           <span>Download initiated! Check your browser's download tray.</span>
@@ -2889,7 +2885,6 @@
           const winBtn = document.getElementById('btnDownloadWin');
           const metaWin = document.getElementById('metaWin');
           const guideCode = document.getElementById('guideExeName');
-          const directCode = document.getElementById('directExeName');
           
           if (winBtn) {
             winBtn.href = exeAsset.browser_download_url;
@@ -2900,7 +2895,6 @@
           const mbSize = (exeAsset.size / (1024 * 1024)).toFixed(1);
           if (metaWin) metaWin.textContent = `v${cleanVer} \u2022 Win 10 & 11 (${mbSize} MB)`;
           if (guideCode) guideCode.textContent = exeAsset.name;
-          if (directCode) directCode.textContent = exeAsset.name;
         }
 
         const zipAsset = release.assets && release.assets.find(a => a.name.endsWith('.zip'));
