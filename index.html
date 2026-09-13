@@ -1619,35 +1619,92 @@
       color: #166534;
     }
 
-    /* Paid Plan Selector Tabs */
+    /* Paid Plan Selector Option Cards */
     .plan-selector-bar {
-      display: flex;
-      gap: 6px;
-      background: var(--color-surface-card);
-      padding: 3px;
-      border-radius: var(--radius-lg);
-      margin-bottom: 10px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 12px;
+      background: transparent;
+      padding: 0;
     }
     .plan-pill-btn {
-      flex: 1;
-      padding: 7px 10px;
+      padding: 8px 12px;
       border-radius: var(--radius-md);
-      border: none;
-      background: transparent;
-      font-weight: 600;
+      border: 2px solid var(--color-border);
+      background: #ffffff;
       font-size: 0.84rem;
-      color: var(--color-text-body);
+      color: var(--color-text-main);
       cursor: pointer;
-      transition: all 0.2s;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 6px;
+      gap: 9px;
+      position: relative;
+      text-align: left;
+    }
+    .plan-pill-btn:hover {
+      border-color: #93c5fd;
+      background: #f8fafc;
+      transform: translateY(-1px);
     }
     .plan-pill-btn.active {
+      border-color: var(--color-primary);
+      background: #eff6ff;
+      color: var(--color-primary-dark);
+      box-shadow: 0 3px 10px rgba(37, 99, 235, 0.12);
+    }
+    .plan-radio-circle {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 2px solid #94a3b8;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
       background: #ffffff;
-      color: var(--color-primary);
-      box-shadow: var(--shadow-sm);
+      transition: all 0.2s;
+    }
+    .plan-pill-btn.active .plan-radio-circle {
+      border-color: var(--color-primary);
+      background: var(--color-primary);
+    }
+    .plan-pill-btn.active .plan-radio-circle::after {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #ffffff;
+    }
+    .plan-btn-details {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.25;
+    }
+    .plan-btn-title {
+      font-weight: 700;
+      font-size: 0.84rem;
+    }
+    .plan-btn-subtitle {
+      font-size: 0.74rem;
+      color: var(--color-text-muted);
+    }
+    .plan-pill-btn.active .plan-btn-subtitle {
+      color: #1e40af;
+      font-weight: 600;
+    }
+    .plan-save-pill {
+      margin-left: auto;
+      background: #dcfce7;
+      color: #15803d;
+      border: 1px solid #86efac;
+      border-radius: 9999px;
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 2px 7px;
+      white-space: nowrap;
+      letter-spacing: 0.3px;
     }
 
     /* 2-Column Paid Layout */
@@ -2573,10 +2630,19 @@
           <!-- Plan Selection Bar -->
           <div class="plan-selector-bar">
             <button type="button" class="plan-pill-btn" id="planBtnMonthly" onclick="selectPlan('Monthly', 99)">
-              <span>Monthly Plan &#8212; &#8369;99</span>
+              <span class="plan-radio-circle"></span>
+              <div class="plan-btn-details">
+                <span class="plan-btn-title">Monthly Plan</span>
+                <span class="plan-btn-subtitle">&#8369;99 / month</span>
+              </div>
             </button>
             <button type="button" class="plan-pill-btn active" id="planBtnAnnual" onclick="selectPlan('Annual', 350)">
-              <span>Annual Access &#8212; &#8369;350 (Save 70%)</span>
+              <span class="plan-radio-circle"></span>
+              <div class="plan-btn-details">
+                <span class="plan-btn-title">Annual Access</span>
+                <span class="plan-btn-subtitle">&#8369;350 / year</span>
+              </div>
+              <span class="plan-save-pill">SAVE 70%</span>
             </button>
           </div>
 
