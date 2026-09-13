@@ -1627,61 +1627,110 @@
       background: #f8fafc;
       border: 1.5px solid var(--color-border);
       border-radius: var(--radius-lg);
-      padding: 14px;
+      padding: 16px;
       text-align: center;
     }
     .qr-method-switch {
       display: flex;
-      gap: 6px;
-      margin-bottom: 12px;
+      gap: 8px;
+      margin-bottom: 14px;
     }
     .qr-method-btn {
       flex: 1;
-      padding: 8px 10px;
-      font-size: 0.84rem;
+      padding: 9px 12px;
+      font-size: 0.85rem;
       font-weight: 700;
-      border: 1px solid var(--color-border);
+      border: 1.5px solid var(--color-border);
       background: #ffffff;
       color: var(--color-text-body);
-      border-radius: var(--radius-sm);
+      border-radius: var(--radius-md);
       cursor: pointer;
-      transition: all 0.2s;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .qr-method-btn:hover {
+      border-color: #cbd5e1;
+      background: #f8fafc;
     }
     .qr-method-btn.active.gcash-active {
       background: #007DFE;
       color: #ffffff;
       border-color: #007DFE;
+      box-shadow: 0 4px 14px rgba(0, 125, 254, 0.25);
     }
     .qr-method-btn.active.gotyme-active {
-      background: #0ea5e9;
+      background: #002B49;
       color: #ffffff;
-      border-color: #0ea5e9;
+      border-color: #002B49;
+      box-shadow: 0 4px 14px rgba(0, 43, 73, 0.25);
+    }
+    .qr-brand-header {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 5px 12px;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .qr-brand-header.gcash {
+      background: #eff6ff;
+      color: #007DFE;
+      border: 1px solid #bfdbfe;
+    }
+    .qr-brand-header.gotyme {
+      background: #f0fdfa;
+      color: #0f766e;
+      border: 1px solid #99f6e4;
+    }
+    .qr-amount-pill {
+      font-size: 0.8rem;
+      color: var(--color-text-body);
+      background: #ffffff;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      padding: 4px 10px;
+      margin-bottom: 10px;
+      display: inline-block;
+    }
+    .qr-amount-pill strong {
+      color: #10b981;
+      font-weight: 700;
     }
     .qr-image-frame {
       background: #ffffff;
-      border: 1px solid var(--color-border);
+      border: 1.5px solid var(--color-border);
       border-radius: var(--radius-md);
       padding: 8px;
-      margin: 0 auto 10px auto;
-      max-width: 200px;
+      margin: 0 auto 12px auto;
+      max-width: 220px;
       display: flex;
       align-items: center;
       justify-content: center;
-      aspect-ratio: 1;
       overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s ease;
+    }
+    .qr-image-frame:hover {
+      transform: scale(1.02);
     }
     .qr-image-frame img {
       width: 100%;
-      height: 100%;
+      height: auto;
+      display: block;
       object-fit: contain;
     }
     .qr-account-info {
       font-size: 0.81rem;
       color: var(--color-text-body);
-      line-height: 1.5;
+      line-height: 1.55;
       text-align: left;
       background: #ffffff;
-      padding: 10px 12px;
+      padding: 10px 14px;
       border-radius: var(--radius-sm);
       border: 1px solid var(--color-border);
     }
@@ -2499,21 +2548,40 @@
             <div class="qr-showcase-box">
               <div class="qr-method-switch">
                 <button type="button" class="qr-method-btn active gcash-active" id="qrBtnGCash" onclick="switchPaymentMethod('GCash')">
-                  GCash QR
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
+                    <rect width="24" height="24" rx="5" fill="#007DFE"/>
+                    <path d="M12 5C8.13 5 5 8.13 5 12C5 15.87 8.13 19 12 19C15.31 19 18.09 16.71 18.82 13.58H12V10.72H21.68C21.77 11.14 21.82 11.56 21.82 12C21.82 17.42 17.42 21.82 12 21.82C6.58 21.82 2.18 17.42 2.18 12C2.18 6.58 6.58 2.18 12 2.18C15.41 2.18 18.4 3.93 20.13 6.56L17.8 8.28C16.54 6.35 14.42 5 12 5Z" fill="#FFFFFF"/>
+                  </svg>
+                  <span>GCash QR</span>
                 </button>
                 <button type="button" class="qr-method-btn" id="qrBtnGoTyme" onclick="switchPaymentMethod('GoTyme')">
-                  GoTyme Bank
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
+                    <rect width="24" height="24" rx="5" fill="#002B49"/>
+                    <path d="M12 4C7.58 4 4 7.58 4 12C4 16.42 7.58 20 12 20C15.75 20 18.89 17.42 19.74 13.91H12V10.7H22.75C22.91 11.12 23 11.55 23 12C23 18.08 18.08 23 12 23C5.92 23 1 18.08 1 12C1 5.92 5.92 1 12 1C15.84 1 19.2 2.97 21.15 5.93L18.52 7.86C17.1 5.56 14.72 4 12 4Z" fill="#00D09C"/>
+                  </svg>
+                  <span>GoTyme Bank</span>
                 </button>
               </div>
 
               <!-- GCash Frame -->
               <div id="qrFrameGCash">
+                <div class="qr-brand-header gcash">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="12" fill="#007DFE"/>
+                    <path d="M12 5C8.13 5 5 8.13 5 12C5 15.87 8.13 19 12 19C15.31 19 18.09 16.71 18.82 13.58H12V10.72H21.68C21.77 11.14 21.82 11.56 21.82 12C21.82 17.42 17.42 21.82 12 21.82C6.58 21.82 2.18 17.42 2.18 12C2.18 6.58 6.58 2.18 12 2.18C15.41 2.18 18.4 3.93 20.13 6.56L17.8 8.28C16.54 6.35 14.42 5 12 5Z" fill="#FFFFFF"/>
+                  </svg>
+                  <span>Official GCash QR Code</span>
+                </div>
+                <br />
+                <div class="qr-amount-pill" id="qrGcashAmountPill">
+                  Exact Amount: <strong id="qrGcashAmountText">&#8369;350.00 (1 Year)</strong>
+                </div>
                 <div class="qr-image-frame">
-                  <img src="images/gcash-qr.jpg" alt="GCash Payment QR Code" id="imgGCashQR" />
+                  <img src="payment/GCash_350.jpg" alt="GCash ₱350 Payment QR Code" id="imgGCashQR" />
                 </div>
                 <div class="qr-account-info">
                   <div><strong>Account Name:</strong> MARJUN R.</div>
-                  <div><strong>Payment Method:</strong> GCash QR / Send Money</div>
+                  <div><strong>Payment Method:</strong> GCash QR / InstaPay QRPh</div>
                   <div style="margin-top: 4px; color: var(--color-primary); font-weight: 700;">
                     Amount to Send: <span class="display-price-tag">&#8369;350.00 / yr</span>
                   </div>
@@ -2522,8 +2590,19 @@
 
               <!-- GoTyme Frame -->
               <div id="qrFrameGoTyme" style="display: none;">
+                <div class="qr-brand-header gotyme">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="12" fill="#002B49"/>
+                    <path d="M12 4C7.58 4 4 7.58 4 12C4 16.42 7.58 20 12 20C15.75 20 18.89 17.42 19.74 13.91H12V10.7H22.75C22.91 11.12 23 11.55 23 12C23 18.08 18.08 23 12 23C5.92 23 1 18.08 1 12C1 5.92 5.92 1 12 1C15.84 1 19.2 2.97 21.15 5.93L18.52 7.86C17.1 5.56 14.72 4 12 4Z" fill="#00D09C"/>
+                  </svg>
+                  <span>Official GoTyme Bank QR Code</span>
+                </div>
+                <br />
+                <div class="qr-amount-pill" id="qrGotymeAmountPill">
+                  Exact Amount: <strong id="qrGotymeAmountText">&#8369;350.00 (1 Year)</strong>
+                </div>
                 <div class="qr-image-frame">
-                  <img src="images/gotyme-qr.jpg" alt="GoTyme Bank QR Code" id="imgGoTymeQR" />
+                  <img src="payment/GoTyme_350.jpg" alt="GoTyme ₱350 Bank QR Code" id="imgGoTymeQR" />
                 </div>
                 <div class="qr-account-info">
                   <div><strong>Account Name:</strong> MARJUN R.</div>
@@ -3068,6 +3147,41 @@
       if (modal) modal.classList.remove('active');
     }
 
+    const PAYMENT_QRS = {
+      GCash: {
+        99: 'payment/GCash_99.jpg',
+        350: 'payment/GCash_350.jpg'
+      },
+      GoTyme: {
+        99: 'payment/GoTyme_99.jpg',
+        350: 'payment/GoTyme_350.jpg'
+      }
+    };
+
+    function updatePaymentQR() {
+      const price = currentSelectedPrice === 99 ? 99 : 350;
+      const planLabel = currentSelectedPlan === 'Monthly' ? '1 Month' : '1 Year';
+      const gcashImg = document.getElementById('imgGCashQR');
+      const gotymeImg = document.getElementById('imgGoTymeQR');
+      const gcashAmountText = document.getElementById('qrGcashAmountText');
+      const gotymeAmountText = document.getElementById('qrGotymeAmountText');
+
+      if (gcashImg) {
+        gcashImg.src = PAYMENT_QRS.GCash[price];
+        gcashImg.alt = `GCash ₱${price} Payment QR Code`;
+      }
+      if (gotymeImg) {
+        gotymeImg.src = PAYMENT_QRS.GoTyme[price];
+        gotymeImg.alt = `GoTyme ₱${price} Bank QR Code`;
+      }
+      if (gcashAmountText) {
+        gcashAmountText.innerHTML = `&#8369;${price}.00 (${planLabel})`;
+      }
+      if (gotymeAmountText) {
+        gotymeAmountText.innerHTML = `&#8369;${price}.00 (${planLabel})`;
+      }
+    }
+
     function selectPlan(plan, price) {
       currentSelectedPlan = plan;
       currentSelectedPrice = price;
@@ -3083,6 +3197,7 @@
       document.querySelectorAll('.display-price-tag').forEach(el => {
         el.innerHTML = `&#8369;${price}.00 ${plan === 'Monthly' ? '/ mo' : '/ yr'}`;
       });
+      updatePaymentQR();
     }
 
     function switchPaymentMethod(method) {
