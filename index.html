@@ -2226,6 +2226,9 @@
           </div>
 
           <form id="trialForm" onsubmit="handleTrialSubmit(event)">
+            <!-- Security Honeypot Shield (Invisible to genuine teachers) -->
+            <input type="text" name="teacher_fax_code" id="trialFaxCode" style="display:none!important;position:absolute;left:-9999px;" tabindex="-1" autocomplete="off" />
+            <input type="hidden" name="hp_trap" id="trialHpTrap" value="" />
             <div class="form-group">
               <label class="form-label" for="trialName">Teacher Full Name <span class="required">*</span></label>
               <input type="text" id="trialName" class="form-input" placeholder="e.g., Maria Santos" required maxlength="50" autocomplete="name" />
@@ -2365,6 +2368,9 @@
             <!-- Right Column: Verification Form -->
             <div>
               <form id="paidOrderForm" onsubmit="handlePaidSubmit(event)">
+                <!-- Security Honeypot Shield (Invisible to genuine teachers) -->
+                <input type="text" name="teacher_fax_code" id="paidFaxCode" style="display:none!important;position:absolute;left:-9999px;" tabindex="-1" autocomplete="off" />
+                <input type="hidden" name="hp_trap" id="paidHpTrap" value="" />
                 <div class="form-group">
                   <label class="form-label" for="paidName">Payee Full Name <span class="required">*</span></label>
                   <input type="text" id="paidName" class="form-input" placeholder="Name as shown on payment receipt" required maxlength="50" autocomplete="name" />
@@ -2659,16 +2665,19 @@
     // 5. Licensing & Payment Modal Controllers (Telegram Bot & Apps Script)
     // ==========================================================
     const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbz5KZ6r5X1zrn-qkbVTCea26ap-HPXfpDWV52rIvq8MXicLyK2HoJacEs7oVN5H3vo5xw/exec";
-    const APP_SECRET = "d+H4v!9T$z&P#kL2*q0p@R5(w^N7)c~B1_=jMyV8n-S2b|K5h?C3mX6gY8rF<W9>";
+    const WEB_PUBLIC_KEY = "sinop_web_pub_k8f2m9q1x7v4";
 
     let currentSelectedPlan = 'Annual';
     let currentSelectedPrice = 350;
     let currentReceiptBase64 = '';
     let currentReceiptName = '';
+    let trialModalOpenedAt = 0;
+    let paidModalOpenedAt = 0;
 
     function openTrialModal() {
       const modal = document.getElementById('trialModal');
       if (!modal) return;
+      trialModalOpenedAt = Date.now();
       document.getElementById('trialFormState').style.display = 'block';
       document.getElementById('trialSuccessState').style.display = 'none';
       hideTrialError();
@@ -2699,6 +2708,8 @@
       hideTrialError();
       const name = document.getElementById('trialName').value.trim();
       const email = document.getElementById('trialEmail').value.trim();
+      const faxCode = document.getElementById('trialFaxCode')?.value || '';
+      const hpTrap = document.getElementById('trialHpTrap')?.value || '';
 
       if (!name || !email) {
         showTrialError('Please fill in your name and email address.');
@@ -2716,9 +2727,12 @@
           headers: { 'Content-Type': 'text/plain;charset=utf-8' },
           body: JSON.stringify({
             action: 'requestTrial',
-            secret: APP_SECRET,
+            secret: WEB_PUBLIC_KEY,
             name: name,
-            email: email
+            email: email,
+            teacher_fax_code: faxCode,
+            hp_trap: hpTrap,
+            form_time: trialModalOpenedAt ? Date.now() - trialModalOpenedAt : 5000
           })
         });
         const result = await res.json();
@@ -2757,6 +2771,7 @@
     function openPaidModal(plan, price) {
       const modal = document.getElementById('paidModal');
       if (!modal) return;
+      paidModalOpenedAt = Date.now();
       selectPlan(plan || 'Annual', price || 350);
       document.getElementById('paidFormState').style.display = 'block';
       document.getElementById('paidSuccessState').style.display = 'none';
@@ -2856,6 +2871,8 @@
       const email = document.getElementById('paidEmail').value.trim();
       const method = document.getElementById('paidMethodSelect').value;
       const refNo = document.getElementById('paidRefNo').value.trim();
+      const faxCode = document.getElementById('paidFaxCode')?.value || '';
+      const hpTrap = document.getElementById('paidHpTrap')?.value || '';
 
       if (!name || !email || !refNo) {
         showPaidError('Please fill in all required fields.');
@@ -2877,14 +2894,17 @@
           headers: { 'Content-Type': 'text/plain;charset=utf-8' },
           body: JSON.stringify({
             action: 'submitPaidOrder',
-            secret: APP_SECRET,
+            secret: WEB_PUBLIC_KEY,
             plan: currentSelectedPlan,
             name: name,
             email: email,
             method: method,
             refNo: refNo,
             base64Image: currentReceiptBase64,
-            maxUsers: 1
+            maxUsers: 1,
+            teacher_fax_code: faxCode,
+            hp_trap: hpTrap,
+            form_time: paidModalOpenedAt ? Date.now() - paidModalOpenedAt : 5000
           })
         });
         const result = await res.json();
