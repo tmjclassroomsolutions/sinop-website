@@ -1382,6 +1382,293 @@
 
     .modal-close:hover { color: var(--color-text-main); }
 
+    /* Modal Form & Checkout Styles */
+    .modal-box-wide { max-width: 840px; }
+    .modal-box-medium { max-width: 520px; }
+    .modal-body {
+      padding: 24px 28px;
+      overflow-y: auto;
+      max-height: calc(85vh - 70px);
+    }
+    .form-group {
+      margin-bottom: 16px;
+      text-align: left;
+    }
+    .form-label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-text-main);
+      margin-bottom: 6px;
+    }
+    .form-label .required {
+      color: #ef4444;
+      margin-left: 2px;
+    }
+    .form-input, .form-select {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--radius-md);
+      font-size: 0.92rem;
+      font-family: inherit;
+      color: var(--color-text-main);
+      background-color: #ffffff;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .form-input:focus, .form-select:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+    }
+    .form-helper {
+      font-size: 0.77rem;
+      color: var(--color-text-muted);
+      margin-top: 5px;
+      line-height: 1.4;
+    }
+    .form-alert {
+      padding: 12px 14px;
+      border-radius: var(--radius-md);
+      font-size: 0.86rem;
+      margin-bottom: 16px;
+      display: none;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.45;
+    }
+    .form-alert.active { display: flex; }
+    .form-alert-error {
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      color: #991b1b;
+    }
+    .form-alert-success {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      color: #166534;
+    }
+
+    /* Paid Plan Selector Tabs */
+    .plan-selector-bar {
+      display: flex;
+      gap: 8px;
+      background: var(--color-surface-card);
+      padding: 4px;
+      border-radius: var(--radius-lg);
+      margin-bottom: 18px;
+    }
+    .plan-pill-btn {
+      flex: 1;
+      padding: 9px 12px;
+      border-radius: var(--radius-md);
+      border: none;
+      background: transparent;
+      font-weight: 600;
+      font-size: 0.88rem;
+      color: var(--color-text-body);
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .plan-pill-btn.active {
+      background: #ffffff;
+      color: var(--color-primary);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* 2-Column Paid Layout */
+    .paid-checkout-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.35fr;
+      gap: 22px;
+      align-items: start;
+    }
+    @media (max-width: 768px) {
+      .paid-checkout-layout {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+      .modal-body { padding: 20px; }
+    }
+
+    /* QR Showcase */
+    .qr-showcase-box {
+      background: #f8fafc;
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 14px;
+      text-align: center;
+    }
+    .qr-method-switch {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+    .qr-method-btn {
+      flex: 1;
+      padding: 8px 10px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      border: 1px solid var(--color-border);
+      background: #ffffff;
+      color: var(--color-text-body);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .qr-method-btn.active.gcash-active {
+      background: #007DFE;
+      color: #ffffff;
+      border-color: #007DFE;
+    }
+    .qr-method-btn.active.gotyme-active {
+      background: #0ea5e9;
+      color: #ffffff;
+      border-color: #0ea5e9;
+    }
+    .qr-image-frame {
+      background: #ffffff;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 8px;
+      margin: 0 auto 10px auto;
+      max-width: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      aspect-ratio: 1;
+      overflow: hidden;
+    }
+    .qr-image-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .qr-account-info {
+      font-size: 0.81rem;
+      color: var(--color-text-body);
+      line-height: 1.5;
+      text-align: left;
+      background: #ffffff;
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--color-border);
+    }
+    .qr-account-info strong { color: var(--color-text-main); }
+
+    /* Upload Dropzone */
+    .file-dropzone {
+      border: 2px dashed var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 14px;
+      text-align: center;
+      background: #fafafa;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .file-dropzone:hover {
+      border-color: var(--color-primary);
+      background: #f0f7ff;
+    }
+    .receipt-preview-wrap {
+      margin-top: 6px;
+      position: relative;
+      display: inline-block;
+    }
+    .receipt-preview-wrap img {
+      max-height: 90px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--color-border);
+      object-fit: contain;
+    }
+
+    /* License Key Display Pill */
+    .license-key-pill {
+      background: #f0fdf4;
+      border: 2px dashed #16a34a;
+      border-radius: var(--radius-lg);
+      padding: 14px 18px;
+      margin: 16px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .license-key-text {
+      font-family: 'JetBrains Mono', 'Fira Code', monospace;
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #15803d;
+      letter-spacing: 1.5px;
+      word-break: break-all;
+    }
+    .btn-copy-key {
+      padding: 8px 14px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: #ffffff;
+      background: #16a34a;
+      border: none;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .btn-copy-key:hover { background: #15803d; }
+    .btn-copy-key.copied { background: #0f766e; }
+
+    .activation-steps-list {
+      margin: 10px 0 0 0;
+      padding-left: 18px;
+      font-size: 0.86rem;
+      color: var(--color-text-body);
+      line-height: 1.65;
+    }
+    .activation-steps-list li { margin-bottom: 4px; }
+
+    /* Modal Submit Button */
+    .btn-modal-submit {
+      width: 100%;
+      padding: 12px 18px;
+      background: var(--color-primary);
+      color: #ffffff;
+      border: none;
+      border-radius: var(--radius-md);
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+    .btn-modal-submit:hover:not(:disabled) {
+      background: var(--color-primary-dark);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+    .btn-modal-submit:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    .spinner-sm {
+      width: 16px;
+      height: 16px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-top-color: #ffffff;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
     /* ==========================================================
        RESPONSIVE
        ========================================================== */
@@ -1645,7 +1932,7 @@
               <span>No credit card required to start</span>
             </li>
           </ul>
-          <a href="#download" class="pricing-btn-action pricing-btn-outline">Start 7-Day Free Trial</a>
+          <button type="button" class="pricing-btn-action pricing-btn-outline" onclick="openTrialModal()">Start 7-Day Free Trial</button>
         </div>
 
         <!-- Monthly License -->
@@ -1674,7 +1961,7 @@
               <span>Full teacher developer support</span>
             </li>
           </ul>
-          <a href="#download" class="pricing-btn-action pricing-btn-outline">Get Monthly Access</a>
+          <button type="button" class="pricing-btn-action pricing-btn-outline" onclick="openPaidModal('Monthly', 99)">Get Monthly Access</button>
         </div>
 
         <!-- Annual License (Best Value) -->
@@ -1704,7 +1991,7 @@
               <span>Priority direct support & hardware self-transfer</span>
             </li>
           </ul>
-          <a href="#download" class="pricing-btn-action pricing-btn-primary">Get 1-Year Access (&#8369;350)</a>
+          <button type="button" class="pricing-btn-action pricing-btn-primary" onclick="openPaidModal('Annual', 350)">Get 1-Year Access (&#8369;350)</button>
         </div>
       </div>
 
@@ -1910,6 +2197,260 @@
     </div>
   </div>
 
+  <!-- 7-Day Free Trial Modal -->
+  <div class="modal-overlay" id="trialModal" role="dialog" aria-modal="true" aria-labelledby="trialModalTitle">
+    <div class="modal-box modal-box-medium">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div style="width: 32px; height: 32px; border-radius: 8px; background: #eff6ff; display: flex; align-items: center; justify-content: center; color: var(--color-primary);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+          </div>
+          <div>
+            <h3 id="trialModalTitle" style="font-size: 1.15rem; font-weight: 700; color: var(--color-text-main); margin: 0;">7-Day Free Trial</h3>
+            <p style="font-size: 0.78rem; color: var(--color-text-muted); margin: 2px 0 0 0;">Full desktop access for 1 computer</p>
+          </div>
+        </div>
+        <button type="button" class="modal-close" onclick="closeTrialModal()" aria-label="Close">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <!-- Trial Request Form State -->
+        <div id="trialFormState">
+          <p style="font-size: 0.88rem; color: var(--color-text-body); margin-bottom: 16px; line-height: 1.5;">
+            Evaluate all lesson plan builders, automated school forms, and classroom utilities on your laptop. No payment required.
+          </p>
+
+          <div class="form-alert form-alert-error" id="trialAlertError">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 1px;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <span id="trialAlertErrorMsg">Error message</span>
+          </div>
+
+          <form id="trialForm" onsubmit="handleTrialSubmit(event)">
+            <div class="form-group">
+              <label class="form-label" for="trialName">Teacher Full Name <span class="required">*</span></label>
+              <input type="text" id="trialName" class="form-input" placeholder="e.g., Maria Santos" required maxlength="50" autocomplete="name" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="trialEmail">Email Address <span class="required">*</span></label>
+              <input type="email" id="trialEmail" class="form-input" placeholder="e.g., maria.santos@deped.gov.ph" required autocomplete="email" />
+              <p class="form-helper">Your 7-day license key will be generated instantly and emailed to this address. Disposable email services are blocked.</p>
+            </div>
+
+            <button type="submit" class="btn-modal-submit" id="btnSubmitTrial">
+              <span class="btn-text-default" style="display: inline-flex; align-items: center; gap: 8px;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m9 12 2 2 4-4"/></svg>
+                Generate 7-Day Trial Key
+              </span>
+              <span class="btn-text-loading" style="display: none; align-items: center; gap: 8px;">
+                <span class="spinner-sm"></span>
+                Generating License Key...
+              </span>
+            </button>
+          </form>
+        </div>
+
+        <!-- Trial Success State -->
+        <div id="trialSuccessState" style="display: none; text-align: center;">
+          <div style="width: 50px; height: 50px; border-radius: 50%; background: #ecfdf5; color: #10b981; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 12px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <h4 style="font-size: 1.25rem; font-weight: 700; color: #0f172a; margin: 0 0 4px 0;">Your 7-Day Trial Key is Ready!</h4>
+          <p style="font-size: 0.86rem; color: #64748b; margin: 0;">Activated for 1 laptop &#8226; Full unrestricted features</p>
+
+          <div class="license-key-pill">
+            <span class="license-key-text" id="trialGeneratedKey">SINOP-TRIAL-XXXX-XXXX</span>
+            <button type="button" class="btn-copy-key" id="btnCopyTrialKey" onclick="copyTrialKey()">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+              <span>Copy</span>
+            </button>
+          </div>
+
+          <div style="text-align: left; background: #f8fafc; border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 14px 18px; margin-bottom: 16px;">
+            <p style="font-size: 0.84rem; font-weight: 700; color: var(--color-primary-navy); margin-bottom: 8px;">How to activate in 3 easy steps:</p>
+            <ol class="activation-steps-list" style="margin: 0; padding-left: 18px; font-size: 0.84rem;">
+              <li>Open the SINOP desktop app on your laptop.</li>
+              <li>Click <b>Activate</b> on the welcome screen.</li>
+              <li>Paste the trial key above and click <b>Verify & Activate</b>.</li>
+            </ol>
+          </div>
+
+          <p style="font-size: 0.8rem; color: var(--color-text-muted); margin-bottom: 16px;">
+            A backup copy of this key has also been emailed to <strong id="trialRecipientEmail" style="color: var(--color-text-main);"></strong>.
+          </p>
+
+          <button type="button" class="btn-modal-submit" style="background: var(--color-surface-card); color: var(--color-text-main); border: 1px solid var(--color-border);" onclick="closeTrialModal()">
+            Done & Return to Site
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Paid License Checkout Modal -->
+  <div class="modal-overlay" id="paidModal" role="dialog" aria-modal="true" aria-labelledby="paidModalTitle">
+    <div class="modal-box modal-box-wide">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div style="width: 32px; height: 32px; border-radius: 8px; background: #eff6ff; display: flex; align-items: center; justify-content: center; color: var(--color-primary);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>
+          </div>
+          <div>
+            <h3 id="paidModalTitle" style="font-size: 1.15rem; font-weight: 700; color: var(--color-text-main); margin: 0;">Get Official SINOP License</h3>
+            <p style="font-size: 0.78rem; color: var(--color-text-muted); margin: 2px 0 0 0;">Instant receipt verification via Telegram Desk</p>
+          </div>
+        </div>
+        <button type="button" class="modal-close" onclick="closePaidModal()" aria-label="Close">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <!-- Paid Request Form State -->
+        <div id="paidFormState">
+          <!-- Plan Selection Bar -->
+          <div class="plan-selector-bar">
+            <button type="button" class="plan-pill-btn" id="planBtnMonthly" onclick="selectPlan('Monthly', 99)">
+              <span>Monthly Plan &#8212; &#8369;99</span>
+            </button>
+            <button type="button" class="plan-pill-btn active" id="planBtnAnnual" onclick="selectPlan('Annual', 350)">
+              <span>Annual Access &#8212; &#8369;350 (Save 70%)</span>
+            </button>
+          </div>
+
+          <div class="form-alert form-alert-error" id="paidAlertError">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 1px;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <span id="paidAlertErrorMsg">Error message</span>
+          </div>
+
+          <div class="paid-checkout-layout">
+            <!-- Left Column: Payment Methods & QR -->
+            <div class="qr-showcase-box">
+              <div class="qr-method-switch">
+                <button type="button" class="qr-method-btn active gcash-active" id="qrBtnGCash" onclick="switchPaymentMethod('GCash')">
+                  GCash QR
+                </button>
+                <button type="button" class="qr-method-btn" id="qrBtnGoTyme" onclick="switchPaymentMethod('GoTyme')">
+                  GoTyme Bank
+                </button>
+              </div>
+
+              <!-- GCash Frame -->
+              <div id="qrFrameGCash">
+                <div class="qr-image-frame">
+                  <img src="images/gcash-qr.jpg" alt="GCash Payment QR Code" id="imgGCashQR" />
+                </div>
+                <div class="qr-account-info">
+                  <div><strong>Account Name:</strong> MARJUN R.</div>
+                  <div><strong>Payment Method:</strong> GCash QR / Send Money</div>
+                  <div style="margin-top: 4px; color: var(--color-primary); font-weight: 700;">
+                    Amount to Send: <span class="display-price-tag">&#8369;350.00 / yr</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- GoTyme Frame -->
+              <div id="qrFrameGoTyme" style="display: none;">
+                <div class="qr-image-frame">
+                  <img src="images/gotyme-qr.jpg" alt="GoTyme Bank QR Code" id="imgGoTymeQR" />
+                </div>
+                <div class="qr-account-info">
+                  <div><strong>Account Name:</strong> MARJUN R.</div>
+                  <div><strong>Bank:</strong> GoTyme Bank (InstaPay / QRPh)</div>
+                  <div style="margin-top: 4px; color: var(--color-primary); font-weight: 700;">
+                    Amount to Send: <span class="display-price-tag">&#8369;350.00 / yr</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Column: Verification Form -->
+            <div>
+              <form id="paidOrderForm" onsubmit="handlePaidSubmit(event)">
+                <div class="form-group">
+                  <label class="form-label" for="paidName">Payee Full Name <span class="required">*</span></label>
+                  <input type="text" id="paidName" class="form-input" placeholder="Name as shown on payment receipt" required maxlength="50" autocomplete="name" />
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="paidEmail">Delivery Email Address <span class="required">*</span></label>
+                  <input type="email" id="paidEmail" class="form-input" placeholder="Where your license key will be sent" required autocomplete="email" />
+                  <p class="form-helper">Make sure this email is active. Your permanent key arrives here.</p>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 12px;">
+                  <div class="form-group">
+                    <label class="form-label" for="paidMethodSelect">Method <span class="required">*</span></label>
+                    <select id="paidMethodSelect" class="form-select" onchange="syncMethodSelect(this.value)">
+                      <option value="GCash">GCash</option>
+                      <option value="GoTyme">GoTyme Bank</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="paidRefNo">Reference Number <span class="required">*</span></label>
+                    <input type="text" id="paidRefNo" class="form-input" placeholder="e.g., 100293847561" required minlength="6" maxlength="30" />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Upload Receipt Screenshot <span class="required">*</span></label>
+                  <div class="file-dropzone" onclick="document.getElementById('paidFileInput').click()">
+                    <div id="dropzonePlaceholder" style="font-size: 0.83rem; color: var(--color-text-muted);">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 4px; display: block; margin-left: auto; margin-right: auto; color: var(--color-primary);"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg>
+                      Click to choose receipt screenshot (PNG/JPG under 5MB)
+                    </div>
+                    <div class="receipt-preview-wrap" id="receiptPreviewContainer" style="display: none;">
+                      <img id="paidReceiptPreviewImg" src="" alt="Receipt Preview" />
+                      <div style="font-size: 0.75rem; color: var(--color-text-muted); margin-top: 4px;" id="receiptFileName"></div>
+                    </div>
+                    <input type="file" id="paidFileInput" accept="image/jpeg,image/png" style="display: none;" onchange="handleReceiptFile(this)" />
+                  </div>
+                </div>
+
+                <button type="submit" class="btn-modal-submit" id="btnSubmitPaid">
+                  <span class="btn-text-default" style="display: inline-flex; align-items: center; gap: 8px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+                    Submit Proof of Payment
+                  </span>
+                  <span class="btn-text-loading" style="display: none; align-items: center; gap: 8px;">
+                    <span class="spinner-sm"></span>
+                    Sending for Telegram Verification...
+                  </span>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- Paid Success State -->
+        <div id="paidSuccessState" style="display: none; text-align: center; padding: 12px 0;">
+          <div style="width: 52px; height: 52px; border-radius: 50%; background: #ecfdf5; color: #10b981; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 14px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <h4 style="font-size: 1.25rem; font-weight: 700; color: #0f172a; margin: 0 0 6px 0;">Payment Receipt Submitted!</h4>
+          <p style="font-size: 0.88rem; color: #64748b; margin: 0 0 16px 0;">Order Reference: <strong id="paidOrderRefBadge" style="color: var(--color-primary); font-family: monospace;">ORD-XXXXX</strong></p>
+
+          <div style="text-align: left; background: #f8fafc; border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 16px 20px; margin-bottom: 18px; line-height: 1.6;">
+            <p style="font-size: 0.86rem; color: var(--color-text-main); margin-bottom: 8px;">
+              Your proof of payment has been forwarded directly to our <b>Telegram verification desk</b>.
+            </p>
+            <p style="font-size: 0.84rem; color: var(--color-text-body); margin: 0;">
+              As soon as verified, your official license key and activation instructions will be automatically delivered to:
+              <br/><strong id="paidConfirmationEmail" style="color: var(--color-primary-navy); font-size: 0.95rem;"></strong>
+            </p>
+          </div>
+
+          <p style="font-size: 0.8rem; color: var(--color-text-muted); margin-bottom: 18px;">
+            Need help or have questions? Email us at <a href="mailto:tmj.classroomsolutions@gmail.com" style="color: var(--color-primary); font-weight: 600;">tmj.classroomsolutions@gmail.com</a>.
+          </p>
+
+          <button type="button" class="btn-modal-submit" style="background: var(--color-surface-card); color: var(--color-text-main); border: 1px solid var(--color-border);" onclick="closePaidModal()">
+            Done & Return to Site
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script>
     // Embedded copy of Terms and Privacy for modal fallback
     const DOCS = {
@@ -2111,6 +2652,283 @@
             openDocModal('privacy');
           }
         });
+      });
+    });
+
+    // ==========================================================
+    // 5. Licensing & Payment Modal Controllers (Telegram Bot & Apps Script)
+    // ==========================================================
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbz5KZ6r5X1zrn-qkbVTCea26ap-HPXfpDWV52rIvq8MXicLyK2HoJacEs7oVN5H3vo5xw/exec";
+    const APP_SECRET = "d+H4v!9T$z&P#kL2*q0p@R5(w^N7)c~B1_=jMyV8n-S2b|K5h?C3mX6gY8rF<W9>";
+
+    let currentSelectedPlan = 'Annual';
+    let currentSelectedPrice = 350;
+    let currentReceiptBase64 = '';
+    let currentReceiptName = '';
+
+    function openTrialModal() {
+      const modal = document.getElementById('trialModal');
+      if (!modal) return;
+      document.getElementById('trialFormState').style.display = 'block';
+      document.getElementById('trialSuccessState').style.display = 'none';
+      hideTrialError();
+      modal.classList.add('active');
+    }
+
+    function closeTrialModal() {
+      const modal = document.getElementById('trialModal');
+      if (modal) modal.classList.remove('active');
+    }
+
+    function showTrialError(msg) {
+      const alert = document.getElementById('trialAlertError');
+      const txt = document.getElementById('trialAlertErrorMsg');
+      if (alert && txt) {
+        txt.textContent = msg;
+        alert.classList.add('active');
+      }
+    }
+
+    function hideTrialError() {
+      const alert = document.getElementById('trialAlertError');
+      if (alert) alert.classList.remove('active');
+    }
+
+    async function handleTrialSubmit(e) {
+      e.preventDefault();
+      hideTrialError();
+      const name = document.getElementById('trialName').value.trim();
+      const email = document.getElementById('trialEmail').value.trim();
+
+      if (!name || !email) {
+        showTrialError('Please fill in your name and email address.');
+        return;
+      }
+
+      const btn = document.getElementById('btnSubmitTrial');
+      btn.disabled = true;
+      btn.querySelector('.btn-text-default').style.display = 'none';
+      btn.querySelector('.btn-text-loading').style.display = 'inline-flex';
+
+      try {
+        const res = await fetch(WEB_APP_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify({
+            action: 'requestTrial',
+            secret: APP_SECRET,
+            name: name,
+            email: email
+          })
+        });
+        const result = await res.json();
+
+        if (result.status === 'success') {
+          document.getElementById('trialGeneratedKey').textContent = result.licenseKey;
+          document.getElementById('trialRecipientEmail').textContent = email;
+          document.getElementById('trialFormState').style.display = 'none';
+          document.getElementById('trialSuccessState').style.display = 'block';
+        } else {
+          showTrialError(result.message || 'Failed to generate trial key. Please check your information.');
+        }
+      } catch (err) {
+        showTrialError('Network error connecting to license server. Please verify your connection.');
+      } finally {
+        btn.disabled = false;
+        btn.querySelector('.btn-text-default').style.display = 'inline-flex';
+        btn.querySelector('.btn-text-loading').style.display = 'none';
+      }
+    }
+
+    function copyTrialKey() {
+      const key = document.getElementById('trialGeneratedKey').textContent;
+      if (!key) return;
+      navigator.clipboard.writeText(key).then(() => {
+        const btn = document.getElementById('btnCopyTrialKey');
+        btn.classList.add('copied');
+        btn.querySelector('span').textContent = 'Copied!';
+        setTimeout(() => {
+          btn.classList.remove('copied');
+          btn.querySelector('span').textContent = 'Copy';
+        }, 2500);
+      });
+    }
+
+    function openPaidModal(plan, price) {
+      const modal = document.getElementById('paidModal');
+      if (!modal) return;
+      selectPlan(plan || 'Annual', price || 350);
+      document.getElementById('paidFormState').style.display = 'block';
+      document.getElementById('paidSuccessState').style.display = 'none';
+      hidePaidError();
+      modal.classList.add('active');
+    }
+
+    function closePaidModal() {
+      const modal = document.getElementById('paidModal');
+      if (modal) modal.classList.remove('active');
+    }
+
+    function selectPlan(plan, price) {
+      currentSelectedPlan = plan;
+      currentSelectedPrice = price;
+      const btnMonthly = document.getElementById('planBtnMonthly');
+      const btnAnnual = document.getElementById('planBtnAnnual');
+      if (plan === 'Monthly') {
+        btnMonthly.classList.add('active');
+        btnAnnual.classList.remove('active');
+      } else {
+        btnAnnual.classList.add('active');
+        btnMonthly.classList.remove('active');
+      }
+      document.querySelectorAll('.display-price-tag').forEach(el => {
+        el.innerHTML = `&#8369;${price}.00 ${plan === 'Monthly' ? '/ mo' : '/ yr'}`;
+      });
+    }
+
+    function switchPaymentMethod(method) {
+      const btnGCash = document.getElementById('qrBtnGCash');
+      const btnGoTyme = document.getElementById('qrBtnGoTyme');
+      const frameGCash = document.getElementById('qrFrameGCash');
+      const frameGoTyme = document.getElementById('qrFrameGoTyme');
+      const select = document.getElementById('paidMethodSelect');
+
+      if (method === 'GCash') {
+        btnGCash.className = 'qr-method-btn active gcash-active';
+        btnGoTyme.className = 'qr-method-btn';
+        frameGCash.style.display = 'block';
+        frameGoTyme.style.display = 'none';
+        if (select) select.value = 'GCash';
+      } else {
+        btnGoTyme.className = 'qr-method-btn active gotyme-active';
+        btnGCash.className = 'qr-method-btn';
+        frameGoTyme.style.display = 'block';
+        frameGCash.style.display = 'none';
+        if (select) select.value = 'GoTyme';
+      }
+    }
+
+    function syncMethodSelect(val) {
+      switchPaymentMethod(val);
+    }
+
+    function handleReceiptFile(input) {
+      const file = input.files && input.files[0];
+      if (!file) return;
+      if (file.size > 5 * 1024 * 1024) {
+        showPaidError('Receipt image must be smaller than 5MB.');
+        input.value = '';
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        currentReceiptBase64 = e.target.result;
+        currentReceiptName = file.name;
+        document.getElementById('dropzonePlaceholder').style.display = 'none';
+        const previewWrap = document.getElementById('receiptPreviewContainer');
+        previewWrap.style.display = 'inline-block';
+        document.getElementById('paidReceiptPreviewImg').src = currentReceiptBase64;
+        document.getElementById('receiptFileName').textContent = file.name;
+        hidePaidError();
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function showPaidError(msg) {
+      const alert = document.getElementById('paidAlertError');
+      const txt = document.getElementById('paidAlertErrorMsg');
+      if (alert && txt) {
+        txt.textContent = msg;
+        alert.classList.add('active');
+      }
+    }
+
+    function hidePaidError() {
+      const alert = document.getElementById('paidAlertError');
+      if (alert) alert.classList.remove('active');
+    }
+
+    async function handlePaidSubmit(e) {
+      e.preventDefault();
+      hidePaidError();
+
+      const name = document.getElementById('paidName').value.trim();
+      const email = document.getElementById('paidEmail').value.trim();
+      const method = document.getElementById('paidMethodSelect').value;
+      const refNo = document.getElementById('paidRefNo').value.trim();
+
+      if (!name || !email || !refNo) {
+        showPaidError('Please fill in all required fields.');
+        return;
+      }
+      if (!currentReceiptBase64) {
+        showPaidError('Please upload a screenshot or image of your payment receipt.');
+        return;
+      }
+
+      const btn = document.getElementById('btnSubmitPaid');
+      btn.disabled = true;
+      btn.querySelector('.btn-text-default').style.display = 'none';
+      btn.querySelector('.btn-text-loading').style.display = 'inline-flex';
+
+      try {
+        const res = await fetch(WEB_APP_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify({
+            action: 'submitPaidOrder',
+            secret: APP_SECRET,
+            plan: currentSelectedPlan,
+            name: name,
+            email: email,
+            method: method,
+            refNo: refNo,
+            base64Image: currentReceiptBase64,
+            maxUsers: 1
+          })
+        });
+        const result = await res.json();
+
+        if (result.status === 'success') {
+          document.getElementById('paidOrderRefBadge').textContent = result.orderId || ('ORD-' + refNo.slice(-6).toUpperCase());
+          document.getElementById('paidConfirmationEmail').textContent = email;
+          document.getElementById('paidFormState').style.display = 'none';
+          document.getElementById('paidSuccessState').style.display = 'block';
+        } else {
+          showPaidError(result.message || 'Error submitting receipt. Please try again.');
+        }
+      } catch (err) {
+        showPaidError('Network error connecting to license server. Please verify your connection.');
+      } finally {
+        btn.disabled = false;
+        btn.querySelector('.btn-text-default').style.display = 'inline-flex';
+        btn.querySelector('.btn-text-loading').style.display = 'none';
+      }
+    }
+
+    // Overlay clicks and Escape key listeners
+    document.addEventListener('DOMContentLoaded', () => {
+      const trialModalEl = document.getElementById('trialModal');
+      if (trialModalEl) {
+        trialModalEl.addEventListener('click', (e) => {
+          if (e.target === trialModalEl) closeTrialModal();
+        });
+      }
+
+      const paidModalEl = document.getElementById('paidModal');
+      if (paidModalEl) {
+        paidModalEl.addEventListener('click', (e) => {
+          if (e.target === paidModalEl) closePaidModal();
+        });
+      }
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeTrialModal();
+          closePaidModal();
+          const docModal = document.getElementById('docModal');
+          if (docModal) docModal.classList.remove('active');
+        }
       });
     });
   </script>
