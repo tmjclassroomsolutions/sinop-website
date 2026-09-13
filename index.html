@@ -2703,6 +2703,54 @@
       if (alert) alert.classList.remove('active');
     }
 
+    const COMMON_EMAIL_TYPOS = {
+      'gmai.com': 'gmail.com',
+      'gamil.com': 'gmail.com',
+      'gmial.com': 'gmail.com',
+      'gmaill.com': 'gmail.com',
+      'gmaik.com': 'gmail.com',
+      'gmal.com': 'gmail.com',
+      'gmaul.com': 'gmail.com',
+      'gmeil.com': 'gmail.com',
+      'gmail.con': 'gmail.com',
+      'gmail.co': 'gmail.com',
+      'gmail.cm': 'gmail.com',
+      'yaho.com': 'yahoo.com',
+      'yahooo.com': 'yahoo.com',
+      'yaho.com.ph': 'yahoo.com.ph',
+      'yahoo.con': 'yahoo.com',
+      'yahoo.co': 'yahoo.com',
+      'hotmial.com': 'hotmail.com',
+      'hotmai.com': 'hotmail.com',
+      'outlok.com': 'outlook.com',
+      'outloo.com': 'outlook.com',
+      'deped.com': 'deped.gov.ph',
+      'deped.gov.com': 'deped.gov.ph',
+      'deped.ph': 'deped.gov.ph'
+    };
+
+    function validateEmailInput(email) {
+      if (!email || !email.includes('@')) {
+        return { valid: false, message: 'Please enter a valid email address.' };
+      }
+      const parts = email.trim().split('@');
+      if (parts.length !== 2 || !parts[0] || !parts[1]) {
+        return { valid: false, message: 'Please enter a valid email address.' };
+      }
+      const domain = parts[1].toLowerCase().trim();
+      if (!domain.includes('.') || domain.endsWith('.')) {
+        return { valid: false, message: 'Please enter a complete domain (e.g., @gmail.com or @deped.gov.ph).' };
+      }
+      if (COMMON_EMAIL_TYPOS[domain]) {
+        return { valid: false, message: `Did you mean @${COMMON_EMAIL_TYPOS[domain]}? Please check your email spelling so you can receive your key.` };
+      }
+      const basicRe = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      if (!basicRe.test(email.trim())) {
+        return { valid: false, message: 'Invalid email format. Please check for typos.' };
+      }
+      return { valid: true };
+    }
+
     async function handleTrialSubmit(e) {
       e.preventDefault();
       hideTrialError();
@@ -2713,6 +2761,12 @@
 
       if (!name || !email) {
         showTrialError('Please fill in your name and email address.');
+        return;
+      }
+
+      const emailCheck = validateEmailInput(email);
+      if (!emailCheck.valid) {
+        showTrialError(emailCheck.message);
         return;
       }
 
@@ -2876,6 +2930,11 @@
 
       if (!name || !email || !refNo) {
         showPaidError('Please fill in all required fields.');
+        return;
+      }
+      const emailCheck = validateEmailInput(email);
+      if (!emailCheck.valid) {
+        showPaidError(emailCheck.message);
         return;
       }
       if (!currentReceiptBase64) {
