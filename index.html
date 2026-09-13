@@ -1021,13 +1021,18 @@
     }
 
     .payment-badge-logo {
-      width: 22px;
       height: 22px;
-      border-radius: 6px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
+    }
+
+    .payment-badge-logo img {
+      max-height: 20px;
+      width: auto;
+      object-fit: contain;
+      display: block;
     }
 
     /* ==========================================================
@@ -1687,16 +1692,16 @@
       background: #f8fafc;
     }
     .qr-method-btn.active.gcash-active {
-      background: #007DFE;
-      color: #ffffff;
+      background: #eff6ff;
+      color: #007DFE;
       border-color: #007DFE;
-      box-shadow: 0 4px 14px rgba(0, 125, 254, 0.25);
+      box-shadow: 0 4px 14px rgba(0, 125, 254, 0.2);
     }
     .qr-method-btn.active.gotyme-active {
-      background: #002B49;
-      color: #ffffff;
-      border-color: #002B49;
-      box-shadow: 0 4px 14px rgba(0, 43, 73, 0.25);
+      background: #f0fdfa;
+      color: #0d9488;
+      border-color: #0d9488;
+      box-shadow: 0 4px 14px rgba(13, 148, 136, 0.2);
     }
     .qr-brand-header {
       display: inline-flex;
@@ -2220,18 +2225,14 @@
         <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;">
           <span style="font-weight: 700; color: var(--color-primary-navy); font-size: 0.92rem;">Accepted Payment Methods:</span>
           <span class="payment-badge payment-badge-gcash">
-            <span class="payment-badge-logo" style="background: #007DFE;">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 5C8.13 5 5 8.13 5 12C5 15.87 8.13 19 12 19C15.31 19 18.09 16.71 18.82 13.58H12V10.72H21.68C21.77 11.14 21.82 11.56 21.82 12C21.82 17.42 17.42 21.82 12 21.82C6.58 21.82 2.18 17.42 2.18 12C2.18 6.58 6.58 2.18 12 2.18C15.41 2.18 18.4 3.93 20.13 6.56L17.8 8.28C16.54 6.35 14.42 5 12 5Z" fill="#FFFFFF"/>
-              </svg>
+            <span class="payment-badge-logo">
+              <img src="images/gcash-official.png" alt="GCash" style="height: 18px; width: auto; object-fit: contain;" />
             </span>
             <span>GCash QR</span>
           </span>
           <span class="payment-badge payment-badge-gotyme">
-            <span class="payment-badge-logo" style="background: #002B49;">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 4C7.58 4 4 7.58 4 12C4 16.42 7.58 20 12 20C15.75 20 18.89 17.42 19.74 13.91H12V10.7H22.75C22.91 11.12 23 11.55 23 12C23 18.08 18.08 23 12 23C5.92 23 1 18.08 1 12C1 5.92 5.92 1 12 1C15.84 1 19.2 2.97 21.15 5.93L18.52 7.86C17.1 5.56 14.72 4 12 4Z" fill="#00D09C"/>
-              </svg>
+            <span class="payment-badge-logo">
+              <img src="images/gotyme-icon.png" alt="GoTyme Bank" style="height: 16px; width: auto; object-fit: contain;" />
             </span>
             <span>GoTyme Bank</span>
           </span>
@@ -2593,17 +2594,11 @@
             <div class="qr-showcase-box">
               <div class="qr-method-switch">
                 <button type="button" class="qr-method-btn active gcash-active" id="qrBtnGCash" onclick="switchPaymentMethod('GCash')">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
-                    <rect width="24" height="24" rx="5" fill="#007DFE"/>
-                    <path d="M12 5C8.13 5 5 8.13 5 12C5 15.87 8.13 19 12 19C15.31 19 18.09 16.71 18.82 13.58H12V10.72H21.68C21.77 11.14 21.82 11.56 21.82 12C21.82 17.42 17.42 21.82 12 21.82C6.58 21.82 2.18 17.42 2.18 12C2.18 6.58 6.58 2.18 12 2.18C15.41 2.18 18.4 3.93 20.13 6.56L17.8 8.28C16.54 6.35 14.42 5 12 5Z" fill="#FFFFFF"/>
-                  </svg>
+                  <img src="images/gcash-official.png" alt="GCash" style="width: 22px; height: 22px; object-fit: contain; flex-shrink: 0;" />
                   <span>GCash QR</span>
                 </button>
                 <button type="button" class="qr-method-btn" id="qrBtnGoTyme" onclick="switchPaymentMethod('GoTyme')">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
-                    <rect width="24" height="24" rx="5" fill="#002B49"/>
-                    <path d="M12 4C7.58 4 4 7.58 4 12C4 16.42 7.58 20 12 20C15.75 20 18.89 17.42 19.74 13.91H12V10.7H22.75C22.91 11.12 23 11.55 23 12C23 18.08 18.08 23 12 23C5.92 23 1 18.08 1 12C1 5.92 5.92 1 12 1C15.84 1 19.2 2.97 21.15 5.93L18.52 7.86C17.1 5.56 14.72 4 12 4Z" fill="#00D09C"/>
-                  </svg>
+                  <img src="images/gotyme-icon.png" alt="GoTyme Bank" style="width: 26px; height: 18px; object-fit: contain; flex-shrink: 0;" />
                   <span>GoTyme Bank</span>
                 </button>
               </div>
@@ -2611,10 +2606,7 @@
               <!-- GCash Frame -->
               <div id="qrFrameGCash">
                 <div class="qr-brand-header gcash">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="12" cy="12" r="12" fill="#007DFE"/>
-                    <path d="M12 5C8.13 5 5 8.13 5 12C5 15.87 8.13 19 12 19C15.31 19 18.09 16.71 18.82 13.58H12V10.72H21.68C21.77 11.14 21.82 11.56 21.82 12C21.82 17.42 17.42 21.82 12 21.82C6.58 21.82 2.18 17.42 2.18 12C2.18 6.58 6.58 2.18 12 2.18C15.41 2.18 18.4 3.93 20.13 6.56L17.8 8.28C16.54 6.35 14.42 5 12 5Z" fill="#FFFFFF"/>
-                  </svg>
+                  <img src="images/gcash-official.png" alt="GCash" style="width: 18px; height: 18px; object-fit: contain; flex-shrink: 0;" />
                   <span>Official GCash QR Code</span>
                 </div>
                 <br />
@@ -2636,10 +2628,7 @@
               <!-- GoTyme Frame -->
               <div id="qrFrameGoTyme" style="display: none;">
                 <div class="qr-brand-header gotyme">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="12" cy="12" r="12" fill="#002B49"/>
-                    <path d="M12 4C7.58 4 4 7.58 4 12C4 16.42 7.58 20 12 20C15.75 20 18.89 17.42 19.74 13.91H12V10.7H22.75C22.91 11.12 23 11.55 23 12C23 18.08 18.08 23 12 23C5.92 23 1 18.08 1 12C1 5.92 5.92 1 12 1C15.84 1 19.2 2.97 21.15 5.93L18.52 7.86C17.1 5.56 14.72 4 12 4Z" fill="#00D09C"/>
-                  </svg>
+                  <img src="images/gotyme-icon.png" alt="GoTyme Bank" style="width: 22px; height: 15px; object-fit: contain; flex-shrink: 0;" />
                   <span>Official GoTyme Bank QR Code</span>
                 </div>
                 <br />
