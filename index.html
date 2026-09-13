@@ -1792,36 +1792,19 @@
       color: #0d9488;
       border-color: #0d9488;
       box-shadow: 0 4px 14px rgba(13, 148, 136, 0.2);
-    }
-    .qr-brand-header {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 3px 10px;
-      border-radius: 9999px;
-      font-size: 0.76rem;
-      font-weight: 700;
-      margin-bottom: 0;
-    }
-    .qr-brand-header.gcash {
-      background: #eff6ff;
-      color: #007DFE;
-      border: 1px solid #bfdbfe;
-    }
-    .qr-brand-header.gotyme {
-      background: #f0fdfa;
-      color: #0f766e;
-      border: 1px solid #99f6e4;
-    }
     .qr-amount-pill {
-      font-size: 0.78rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-size: 0.82rem;
       color: var(--color-text-body);
       background: #ffffff;
       border: 1px solid var(--color-border);
       border-radius: var(--radius-sm);
-      padding: 3px 8px;
-      margin-bottom: 0;
-      display: inline-block;
+      padding: 4px 10px;
+      margin: 0 auto 8px auto;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
     }
     .qr-amount-pill strong {
       color: #10b981;
@@ -2709,7 +2692,7 @@
               <div class="qr-method-switch">
                 <button type="button" class="qr-method-btn active gcash-active" id="qrBtnGCash" onclick="switchPaymentMethod('GCash')">
                   <img src="images/gcash-official.png" alt="GCash" style="width: 22px; height: 22px; object-fit: contain; flex-shrink: 0;" />
-                  <span>GCash QR</span>
+                  <span>GCash</span>
                 </button>
                 <button type="button" class="qr-method-btn" id="qrBtnGoTyme" onclick="switchPaymentMethod('GoTyme')">
                   <img src="images/gotyme-icon.png" alt="GoTyme Bank" style="width: 26px; height: 18px; object-fit: contain; flex-shrink: 0;" />
@@ -2719,21 +2702,15 @@
 
               <!-- GCash Frame -->
               <div id="qrFrameGCash">
-                <div style="display: flex; align-items: center; justify-content: space-between; gap: 6px; margin-bottom: 8px;">
-                  <div class="qr-brand-header gcash">
-                    <img src="images/gcash-official.png" alt="GCash" style="width: 16px; height: 16px; object-fit: contain; flex-shrink: 0;" />
-                    <span>Official GCash QR</span>
-                  </div>
-                  <div class="qr-amount-pill" id="qrGcashAmountPill">
-                    Exact: <strong id="qrGcashAmountText">&#8369;350.00 (1 Year)</strong>
-                  </div>
+                <div class="qr-amount-pill" id="qrGcashAmountPill">
+                  Exact Amount: <strong id="qrGcashAmountText">&#8369;350.00 (1 Year)</strong>
                 </div>
                 <div class="qr-image-frame">
                   <img src="payment/GCash_350.jpg" alt="GCash ₱350 Payment QR Code" id="imgGCashQR" />
                 </div>
                 <div class="qr-account-info">
                   <div><strong>Account Name:</strong> Teacher MJ</div>
-                  <div><strong>Payment Method:</strong> GCash QR / InstaPay QRPh</div>
+                  <div><strong>Network:</strong> InstaPay / QRPh</div>
                   <div style="margin-top: 3px; color: var(--color-primary); font-weight: 700;">
                     Amount to Send: <span class="display-price-tag">&#8369;350.00 / yr</span>
                   </div>
@@ -2742,21 +2719,15 @@
 
               <!-- GoTyme Frame -->
               <div id="qrFrameGoTyme" style="display: none;">
-                <div style="display: flex; align-items: center; justify-content: space-between; gap: 6px; margin-bottom: 8px;">
-                  <div class="qr-brand-header gotyme">
-                    <img src="images/gotyme-icon.png" alt="GoTyme Bank" style="width: 20px; height: 14px; object-fit: contain; flex-shrink: 0;" />
-                    <span>GoTyme Bank QR</span>
-                  </div>
-                  <div class="qr-amount-pill" id="qrGotymeAmountPill">
-                    Exact: <strong id="qrGotymeAmountText">&#8369;350.00 (1 Year)</strong>
-                  </div>
+                <div class="qr-amount-pill" id="qrGotymeAmountPill">
+                  Exact Amount: <strong id="qrGotymeAmountText">&#8369;350.00 (1 Year)</strong>
                 </div>
                 <div class="qr-image-frame">
                   <img src="payment/GoTyme_350.jpg" alt="GoTyme ₱350 Bank QR Code" id="imgGoTymeQR" />
                 </div>
                 <div class="qr-account-info">
                   <div><strong>Account Name:</strong> Teacher MJ</div>
-                  <div><strong>Bank:</strong> GoTyme Bank (InstaPay / QRPh)</div>
+                  <div><strong>Network:</strong> InstaPay / QRPh</div>
                   <div style="margin-top: 3px; color: var(--color-primary); font-weight: 700;">
                     Amount to Send: <span class="display-price-tag">&#8369;350.00 / yr</span>
                   </div>
