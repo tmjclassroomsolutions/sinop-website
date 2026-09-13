@@ -2103,7 +2103,7 @@
           <div class="window-dot dot-red"></div>
           <div class="window-dot dot-yellow"></div>
           <div class="window-dot dot-green"></div>
-          <div class="window-title" id="showcaseWindowTitle">SINOP — Teacher Workspace (Desktop v1.4.5)</div>
+          <div class="window-title" id="showcaseWindowTitle">SINOP — Teacher Workspace (Desktop v1.5.2)</div>
         </div>
         <div class="mockup-inner">
           <img src="dashboard-preview.png" 
@@ -2156,7 +2156,7 @@
         </div>
 
         <div style="text-align: center; margin-top: 10px; font-size: 0.8rem; color: #64748b;">
-          Direct download issues? <a href="https://github.com/tmjclassroomsolutions/sinop-releases/releases/latest" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); font-weight: 600; text-decoration: underline;">Open GitHub Releases page</a> to download <code style="background: #f1f5f9; padding: 2px 5px; border-radius: 4px;">SINOP-Setup-1.5.2.exe</code> directly.
+          Direct download issues? <a href="https://github.com/tmjclassroomsolutions/sinop-releases/releases/latest" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); font-weight: 600; text-decoration: underline;">Open GitHub Releases page</a> to download <code id="directExeName" style="background: #f1f5f9; padding: 2px 5px; border-radius: 4px;">SINOP-Setup-1.5.2.exe</code> directly.
         </div>
 
         <div class="download-status-msg" id="downloadStatusMsg">
@@ -2365,7 +2365,7 @@
             <div class="step-number">1</div>
             <div class="step-content">
               <h4>Open Installer</h4>
-              <p>Double-click the downloaded <code id="guideExeName">SINOP-Setup-1.4.5.exe</code> file in your Downloads folder.</p>
+              <p>Double-click the downloaded <code id="guideExeName">SINOP-Setup-1.5.2.exe</code> file in your Downloads folder.</p>
             </div>
           </div>
 
@@ -2881,7 +2881,7 @@
         if (!res.ok) return;
         const release = await res.json();
         
-        const tagName = release.tag_name || 'v1.4.5';
+        const tagName = release.tag_name || 'v1.5.2';
         const cleanVer = tagName.replace(/^v/, '');
 
         const exeAsset = release.assets && release.assets.find(a => a.name.endsWith('.exe'));
@@ -2889,6 +2889,7 @@
           const winBtn = document.getElementById('btnDownloadWin');
           const metaWin = document.getElementById('metaWin');
           const guideCode = document.getElementById('guideExeName');
+          const directCode = document.getElementById('directExeName');
           
           if (winBtn) {
             winBtn.href = exeAsset.browser_download_url;
@@ -2899,6 +2900,7 @@
           const mbSize = (exeAsset.size / (1024 * 1024)).toFixed(1);
           if (metaWin) metaWin.textContent = `v${cleanVer} \u2022 Win 10 & 11 (${mbSize} MB)`;
           if (guideCode) guideCode.textContent = exeAsset.name;
+          if (directCode) directCode.textContent = exeAsset.name;
         }
 
         const zipAsset = release.assets && release.assets.find(a => a.name.endsWith('.zip'));
