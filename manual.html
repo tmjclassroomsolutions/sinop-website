@@ -112,6 +112,13 @@
       gap: 20px;
     }
 
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
     .brand {
       display: flex;
       align-items: center;
@@ -150,6 +157,16 @@
       border-radius: 6px;
       border: 1px solid #bfdbfe;
       letter-spacing: 0.2px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      transition: all 0.2s;
+    }
+
+    .brand-badge:hover {
+      background: #dbeafe;
+      border-color: #93c5fd;
+      color: #1e40af;
     }
 
     /* Search Bar in Navbar */
@@ -254,7 +271,7 @@
 
     /* Sticky Sidebar */
     .manual-sidebar {
-      width: 320px;
+      width: 360px;
       flex-shrink: 0;
       position: sticky;
       top: 72px;
@@ -262,7 +279,7 @@
       overflow-y: auto;
       border-right: 1px solid var(--color-border);
       background: #ffffff;
-      padding: 24px 16px 40px 24px;
+      padding: 24px 16px 40px 20px;
       scrollbar-width: thin;
       scrollbar-color: #e2e8f0 transparent;
     }
@@ -274,6 +291,7 @@
       letter-spacing: 0.08em;
       color: var(--color-text-muted);
       margin: 20px 0 8px 12px;
+      white-space: nowrap;
     }
 
     .sidebar-group-title:first-child {
@@ -299,6 +317,13 @@
       transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
       position: relative;
       border-left: 2px solid transparent;
+      white-space: nowrap;
+    }
+
+    .sidebar-link span:first-of-type {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .sidebar-link:hover {
@@ -334,6 +359,8 @@
       background: #dbeafe;
       color: var(--color-primary-dark);
       font-weight: 700;
+      flex-shrink: 0;
+      white-space: nowrap;
     }
 
     /* Content Area */
@@ -906,11 +933,13 @@
   <!-- Top Sticky Navigation -->
   <nav class="navbar">
     <div class="nav-inner">
-      <a href="index.html" class="brand">
-        <img src="icon.png" alt="SINOP Icon" class="brand-icon">
-        <span class="brand-text">SINOP</span>
-        <span class="brand-badge">User Manual</span>
-      </a>
+      <div class="brand-group">
+        <a href="index.html" class="brand" title="Back to SINOP Homepage">
+          <img src="icon.png" alt="SINOP Icon" class="brand-icon">
+          <span class="brand-text">SINOP</span>
+        </a>
+        <a href="manual.html" class="brand-badge" title="SINOP User Manual">User Manual</a>
+      </div>
 
       <!-- Live Search Bar -->
       <div class="nav-search-box">
